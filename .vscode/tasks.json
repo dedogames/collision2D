@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+ 
+		{
+			"type": "shell",
+			"label": "build",
+			
+			"command": "mkdir build; cd build; cmake ../cppProject/ && make -j10;",
+	 
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "CMake template build task"
+		}
+	]
+}
