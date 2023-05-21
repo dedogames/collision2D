@@ -30,8 +30,14 @@ enable_testing()
 FIND_PACKAGE(GTest)
 include_directories(/usr/local/include)
 
-add_executable(collision2D_exec ${collision2D_SOURCES} ${collision2D_HEADERS} )
-TARGET_LINK_LIBRARIES(collision2D_exec LINK_PUBLIC ${Boost_LIBRARIES} ${GTEST_LIBRARIES} )
+add_subdirectory(src)
+add_subdirectory(extern/glad)
+add_subdirectory(extern/glfw)
+add_subdirectory(extern/imgui)
+
+
+# add_executable(collision2D_exec ${collision2D_SOURCES} ${collision2D_HEADERS} glfw imgui glad ${OPENGL_LIBRARIES} )
+# TARGET_LINK_LIBRARIES(collision2D_exec LINK_PUBLIC ${Boost_LIBRARIES} ${GTEST_LIBRARIES} )
 
  
 

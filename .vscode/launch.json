@@ -13,7 +13,7 @@
             "type": "cppdbg",
             "request": "launch",
             "cwd": "${workspaceRoot}/",
-            "program": "${workspaceFolder}/build/collision2D_exec",
+            "program": "${workspaceFolder}/build/Debug/collision2D-exec",
             "stopAtEntry": false, 
             "preLaunchTask": "build",
             "launchCompleteCommand": "exec-run",
