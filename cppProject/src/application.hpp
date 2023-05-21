@@ -1,51 +1,43 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
-#include<iostream>
+#include <iostream>
 #include "renders/graphBase.hpp"
 #include "renders/imgGuiRender/imgGui.hpp"
 #include <memory>
 #include "engine/gelEngine.hpp"
-namespace App{
+namespace App
+{
 
-class Application{
+    class Application
+    {
 
     public:
-    void start()
-    {
-        std::cout << "Start Application" << std::endl;
-        try
+        void start()
         {
-           renders::imgGuiRender::GraphImgGui::getInstance().init(); 
+            std::cout << "Start Application" << std::endl;
+
+            renders::imgGuiRender::GraphImgGui::getInstance().init();
+            gelEnginePtr = std::make_unique<engine::GelEngine>();
+            gelEnginePtr->start();
         }
-        catch(const std::exception& e)
+
+        void run()
         {
-            std::cerr << e.what() << '\n';
-        }
-        
-       
-    
-        
-    }
-
-
-    void run()
-    {
-        std::cout << "Run Application" << std::endl;
-            //Initialize Loop
-        renders::imgGuiRender::GraphImgGui::getInstance().setCallBackLoop([&](){
+            std::cout << "Run Application" << std::endl;
+            // Initialize Loop
+            renders::imgGuiRender::GraphImgGui::getInstance().setCallBackLoop([&](float timeStep)
+                                                                              {
             gelEnginePtr->draw();
-            gelEnginePtr->update(0);
-        });
-    }
+            gelEnginePtr->update(timeStep); });
+        }
 
-    void shutDown()
-    {
-        std::cout << "ShutDown Application" << std::endl;
-    }
+        void shutDown()
+        {
+            std::cout << "ShutDown Application" << std::endl;
+        }
 
-    std::unique_ptr<engine::GelEngine> gelEnginePtr;
-
-};
+        std::unique_ptr<engine::GelEngine> gelEnginePtr;
+    };
 
 }
 

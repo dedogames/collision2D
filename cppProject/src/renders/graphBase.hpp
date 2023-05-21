@@ -3,13 +3,15 @@
 #include <iostream>
 #include <string>
 #include <functional>
+#include "../engine/core/body.hpp"
 namespace renders
 {
     class GraphBase
     {
     public:
         virtual void init() = 0;
-        virtual void drawText(std::string &text, int xPos, int yPos) = 0;
+        virtual void drawText(const std::string &text, int xPos, int yPos) = 0;
+        virtual void DrawBody(engine::core::Body* body) = 0;
         virtual ~GraphBase(){}
         virtual bool isRunning() = 0;
         protected:

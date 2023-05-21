@@ -6,7 +6,7 @@ namespace renders
 {
     namespace imgGuiRender
     {
-        GraphImgGui* GraphImgGui::m_instance = nullptr;
+        GraphImgGui *GraphImgGui::m_instance = nullptr;
         static void glfwErrorCallback(int error, const char *description)
         {
             printf("GLFW error %d: %s\n", error, description);
@@ -40,8 +40,8 @@ namespace renders
             }
         }
 
-        GraphImgGui::GraphImgGui() {}
-        void GraphImgGui::drawText(std::string &text, int x, int y)
+        GraphImgGui::GraphImgGui():m_zoom(10.0f), m_pan_y(8.0f), m_width(1280), m_height(720) {}
+        void GraphImgGui::drawText(const std::string &text, int x, int y)
         {
             ImVec2 p;
             p.x = float(x);
@@ -77,7 +77,27 @@ namespace renders
             }
         }
 
-        void GraphImgGui::setCallBackLoop( std::function<void(void)> callBack_loop)
+        void GraphImgGui::DrawBody(engine::core::Body *body)
+        {
+            Mat22 R(body->rotation);
+            Vec2 x = body->position;
+            Vec2 h = 0.5f * body->width;
+
+            Vec2 v1 = x + R * Vec2(-h.x, -h.y);
+            Vec2 v2 = x + R * Vec2(h.x, -h.y);
+            Vec2 v3 = x + R * Vec2(h.x, h.y);
+            Vec2 v4 = x + R * Vec2(-h.x, h.y);
+
+            glColor3f(0.8f, 0.8f, 0.9f);
+
+            glBegin(GL_LINE_LOOP);
+            glVertex2f(v1.x, v1.y);
+            glVertex2f(v2.x, v2.y);
+            glVertex2f(v3.x, v3.y);
+            glVertex2f(v4.x, v4.y);
+            glEnd();
+        }
+        void GraphImgGui::setCallBackLoop(std::function<void(float)> callBack_loop)
         {
             this->m_callBack_loop = callBack_loop;
             loop();
@@ -99,7 +119,7 @@ namespace renders
                 ImGui::Begin("Overlay", NULL, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoScrollbar);
                 ImGui::End();
 
-                m_callBack_loop();
+                m_callBack_loop(m_timeStep);
 
                 glMatrixMode(GL_MODELVIEW);
                 glLoadIdentity();
@@ -193,3 +213,7 @@ namespace renders
 
     };
 };
+
+
+
+  

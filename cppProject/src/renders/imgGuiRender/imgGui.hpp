@@ -12,6 +12,7 @@
 #include "imgui/imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl2.h"
+#include "../../engine/core/body.hpp"
 namespace renders
 {
     namespace imgGuiRender
@@ -21,10 +22,11 @@ namespace renders
         {
 
         public:
-            virtual void drawText(std::string &text, int xPos, int yPos);
+            virtual void drawText(const std::string &text, int xPos, int yPos);
             virtual void init();
+            virtual void DrawBody(engine::core::Body* body);
             virtual ~GraphImgGui() {}
-            void setCallBackLoop( std::function<void(void)> callBack_loop);
+            void setCallBackLoop( std::function<void(float)> callBack_loop);
 
             static GraphImgGui &getInstance()
             {
@@ -50,7 +52,8 @@ namespace renders
             int m_height = 720;
             float m_zoom = 10.0f;
             float m_pan_y = 8.0f;
-            std::function<void(void)> m_callBack_loop;
+            std::function<void(float)> m_callBack_loop;
+            float m_timeStep = 1.0f / 60.0f;
         };
     };
 };
