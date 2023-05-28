@@ -3,6 +3,7 @@
 #include <iostream>
 #include "renders/graphBase.hpp"
 #include "renders/imgGuiRender/imgGui.hpp"
+#include "renders/graphBase.hpp"
 #include <memory>
 #include "engine/gelEngine.hpp"
 namespace App
@@ -12,23 +13,25 @@ namespace App
     {
 
     public:
+        Application():gelEngine(engine::GelEngine{std::make_unique<renders::imgGuiRender::GraphImgGui>()}){}
         void start()
         {
             std::cout << "Start Application" << std::endl;
 
-            renders::imgGuiRender::GraphImgGui::getInstance().init();
-            gelEnginePtr = std::make_unique<engine::GelEngine>();
-            gelEnginePtr->start();
+            // renders::imgGuiRender::GraphImgGui::getInstance().init();
+            // gelEnginePtr = std::make_unique<engine::GelEngine>();
+            //  gelEnginePtr->start();
+            //    std::unique_ptr<renders::imgGuiRender::GraphImgGui> gui = std::make_unique<renders::imgGuiRender::GraphImgGui>();
+            // gelEngine = ;
+              gelEngine.start();
         }
 
         void run()
         {
             std::cout << "Run Application" << std::endl;
             // Initialize Loop
-            renders::imgGuiRender::GraphImgGui::getInstance().setCallBackLoop([&](float timeStep)
-                                                                              {
-            gelEnginePtr->draw();
-            gelEnginePtr->update(timeStep); });
+              gelEngine.run();
+       
         }
 
         void shutDown()
@@ -36,7 +39,9 @@ namespace App
             std::cout << "ShutDown Application" << std::endl;
         }
 
-        std::unique_ptr<engine::GelEngine> gelEnginePtr;
+    private:
+        engine::GelEngine gelEngine;
+        // std::unique_ptr<engine::GelEngine> gelEnginePtr;
     };
 
 }

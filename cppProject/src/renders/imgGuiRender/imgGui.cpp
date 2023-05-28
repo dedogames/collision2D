@@ -6,41 +6,58 @@ namespace renders
 {
     namespace imgGuiRender
     {
-        GraphImgGui *GraphImgGui::m_instance = nullptr;
+      //  GraphImgGui *GraphImgGui::m_instance = nullptr;
         static void glfwErrorCallback(int error, const char *description)
         {
             printf("GLFW error %d: %s\n", error, description);
         }
 
+
         void GraphImgGui::keyboard(GLFWwindow *window, int key, int scancode, int action, int mods)
         {
-            if (action != GLFW_PRESS)
+            //m_keysPressed.push_back( static_cast<Keys>(key));
+          
+
+            setKeyPressed(key,true);
+
+            if(action == GLFW_RELEASE)
             {
-                return;
+               resetKeys();
             }
 
-            switch (key)
-            {
-            case GLFW_KEY_ESCAPE:
-                // Quit
-                glfwSetWindowShouldClose(m_mainWindow, GL_TRUE);
-                break;
+       
 
-            case GLFW_KEY_A:
+            // if (action != GLFW_PRESS)
+            // {
+            //     return;
+            // }
 
-                break;
+      
 
-            case GLFW_KEY_P:
+            // switch (key)
+            // {
+            // case GLFW_KEY_ESCAPE:
+            //     // Quit
+            //     glfwSetWindowShouldClose(m_mainWindow, GL_TRUE);
+            //     break;
 
-                break;
+            // case GLFW_KEY_A:
 
-            case GLFW_KEY_W:
+            //     break;
 
-                break;
-            }
+            // case GLFW_KEY_P:
+
+            //     break;
+
+            // case GLFW_KEY_W:
+
+            //     break;
+            // }
         }
 
-        GraphImgGui::GraphImgGui():m_zoom(10.0f), m_pan_y(8.0f), m_width(1280), m_height(720) {}
+        GraphImgGui::GraphImgGui() : m_zoom(10.0f), m_pan_y(0.0f), m_width(1280), m_height(720) {
+          
+        }
         void GraphImgGui::drawText(const std::string &text, int x, int y)
         {
             ImVec2 p;
@@ -55,6 +72,8 @@ namespace renders
         {
             return false;
         }
+        
+        
         void GraphImgGui::reshape(GLFWwindow *, int w, int h)
         {
             m_width = w;
@@ -77,7 +96,91 @@ namespace renders
             }
         }
 
-        void GraphImgGui::DrawBody(engine::core::Body *body)
+        void  GraphImgGui::DrawVector(const engine::core::Vec2 &position, float len, float angle, engine::core::ETypeColor color)
+        {
+            /*              -WingUp
+                              -       
+                               ( - angle - 135 degree or 2.35619 radisn
+            pos-----------------vec
+                               ( - angle 225 degree or 3.92699 radians
+                              -
+                            - WinDown
+
+
+            */
+
+
+            Mat22 RotVec(angle);  
+            Vec2 v1 = position + RotVec*Vec2(len,0);
+
+            Vec2 vUp =  (v1 + RotVec  *  (Mat22(angleWingUp)   * Vec2(1,0)));
+            Vec2 vDown =  (v1 + RotVec * (Mat22(angleWingDown) *  Vec2(1,0) ));
+
+            Vec2 v2 =  vUp;
+            Vec2 v3 =  vDown;
+
+            DrawPoint(position,engine::core::ETypeColor::LIGHTGREY );
+            DrawPoint(v1,engine::core::ETypeColor::LIGHTGREY );
+            DrawLine(position, v1, color);
+            DrawLine(v1, v2, color);
+            DrawLine(v1, v3, color);
+        }
+
+
+        void GraphImgGui::DrawRect( const engine::core::Vec2 &position,  const Vec2& size, bool fill, engine::core::ETypeColor color , float angle )
+        {
+            Mat22 R(angle);
+            Vec2 x = position;
+            Vec2 h = 0.5f * size;
+
+            uint  typeShape = GL_LINE_LOOP;
+            if(fill)
+            {
+                typeShape = GL_POLYGON;
+            }
+
+            Vec2 v1 = x + R * Vec2(-h.x, -h.y);
+            Vec2 v2 = x + R * Vec2(h.x, -h.y);
+            Vec2 v3 = x + R * Vec2(h.x, h.y);
+            Vec2 v4 = x + R * Vec2(-h.x, h.y);
+            engine::core::ColorSt cColor = engine::core::Color::ColorStsMap[color];
+            glColor3f(cColor.r, cColor.g, cColor.b );
+            glBegin(typeShape);
+                glVertex2f(v1.x, v1.y);
+                glVertex2f(v2.x, v2.y);
+                glVertex2f(v3.x, v3.y);
+                glVertex2f(v4.x, v4.y);
+            glEnd();
+        }
+
+        void GraphImgGui::DrawCircle(const engine::core::Vec2 &position, float radius,  bool fill, engine::core::ETypeColor color, float angle)
+        {
+                std::cout << "Not implemented yet!"<<std::endl;
+        }
+        void  GraphImgGui::DrawLine(const engine::core::Vec2 &start, const engine::core::Vec2 &end,  engine::core::ETypeColor color)
+        {
+            
+            engine::core::ColorSt cColor = engine::core::Color::ColorStsMap[color];
+            glColor3f(cColor.r, cColor.g, cColor.b );
+
+            glBegin(GL_LINE_LOOP);
+            glVertex2f(start.x, start.y);
+            glVertex2f(end.x, end.y); 
+            glEnd();
+        }
+        void  GraphImgGui::DrawPoint(const engine::core::Vec2 &position, engine::core::ETypeColor color)
+        {
+            glPointSize(6.0f);
+            engine::core::ColorSt cColor = engine::core::Color::ColorStsMap[color];
+            glColor3f(cColor.r, cColor.g, cColor.b );
+            glBegin(GL_POINTS);
+            glVertex2f(position.x, position.y);
+            glEnd();
+		    glPointSize(1.0f);
+        }
+
+         
+        void GraphImgGui::DrawBody(engine::core::Body *body, engine::core::ETypeColor color)
         {
             Mat22 R(body->rotation);
             Vec2 x = body->position;
@@ -87,8 +190,8 @@ namespace renders
             Vec2 v2 = x + R * Vec2(h.x, -h.y);
             Vec2 v3 = x + R * Vec2(h.x, h.y);
             Vec2 v4 = x + R * Vec2(-h.x, h.y);
-
-            glColor3f(0.8f, 0.8f, 0.9f);
+            engine::core::ColorSt cColor = engine::core::Color::ColorStsMap[color];
+            glColor3f(cColor.r, cColor.g, cColor.b );
 
             glBegin(GL_LINE_LOOP);
             glVertex2f(v1.x, v1.y);
@@ -168,6 +271,7 @@ namespace renders
 
             glfwSwapInterval(1);
 
+            // Resize Handler
             glfwSetWindowUserPointer(m_mainWindow, this);
             auto reshapeFunc = [](GLFWwindow *w, int x, int y)
             {
@@ -175,13 +279,54 @@ namespace renders
             };
             glfwSetWindowSizeCallback(m_mainWindow, reshapeFunc);
 
+            //Keyboard handler
             auto keyboardHandler = [](GLFWwindow *w, int key, int scancode, int action, int mods)
             {
+                std::cout << key << std::endl;
                 static_cast<GraphImgGui *>(glfwGetWindowUserPointer(w))->keyboard(w, key, scancode, action, mods);
             };
 
             glfwSetKeyCallback(m_mainWindow, keyboardHandler);
 
+            //Mouse Press Handler
+            auto mousePressHandler = [](GLFWwindow *w,int button, int action, int mods){
+
+                      if( action == GLFW_PRESS)
+                      {
+                              static_cast<GraphImgGui *>(glfwGetWindowUserPointer(w))->m_stateButtonMouse = EStatesButtomMouse::PRESS;
+                      }
+
+                      if(  action == GLFW_RELEASE)
+                      {
+                       
+                            static_cast<GraphImgGui *>(glfwGetWindowUserPointer(w))->m_stateButtonMouse = EStatesButtomMouse::RELEASED;
+                      } 
+             
+            };
+            glfwSetMouseButtonCallback(m_mainWindow, mousePressHandler);
+              float aspect = float(m_width) / float(m_height);
+            //Move
+             auto mouseMoveHandler = [](GLFWwindow *w, double x, double y)
+             {
+
+ 
+                  //  double xpos, ypos;
+                   // glfwGetCursorPos(w, &xpos, &ypos);
+                  //  std::cout << "Position: (" << xpos <<":"  << ypos << ")"<<std::endl;
+
+                  int width, h;
+                glfwGetWindowSize( w, &width, &h );
+
+                ImVec4 clip_space;
+                clip_space.x =   17.7777779*(x / ((width/2) )-1);
+                clip_space.y =   -10* ( y / ((h/2) )-1);
+                
+                   static_cast<GraphImgGui *>(glfwGetWindowUserPointer(w))->m_mousePosition = Vec2(clip_space.x, clip_space.y);
+             };
+
+            glfwSetCursorPosCallback(m_mainWindow,mouseMoveHandler);
+
+         
             float xscale, yscale;
             glfwGetWindowContentScale(m_mainWindow, &xscale, &yscale);
             float uiScale = xscale;
@@ -198,7 +343,7 @@ namespace renders
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
 
-            float aspect = float(m_width) / float(m_height);
+          
             if (m_width >= m_height)
             {
                 // aspect >= 1, set the height from -1 to 1, with larger width
@@ -213,7 +358,3 @@ namespace renders
 
     };
 };
-
-
-
-  
