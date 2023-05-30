@@ -250,6 +250,8 @@ orleans.codegen.cs
 
 # RIA/Silverlight projects
 Generated_Code/
+.DS_Store
+**/.DS_Store
 
 # Backup & report files from converting an old project file
 # to a newer Visual Studio version. Backup files are not needed,
@@ -411,4 +413,6 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+build/
 

@@ -11,7 +11,7 @@ endforeach()
 list(REMOVE_DUPLICATES libGelRenderIO_INCLUDE_DIRS)
 
 add_library(GelRenderIO ${libGelRenderIO_SOURCES} ${libGelRenderIO_HEADERS}  ${OPENGL_LIBRARIES}    )
-target_include_directories(GelRenderIO PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/")
+target_include_directories(GelRenderIO PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/" ../libGelEngine/src/include)
 set_target_properties(GelRenderIO PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${INSTALLATION_PATH}/)
 install(TARGETS GelRenderIO DESTINATION ${INSTALLATION_PATH}/)
 

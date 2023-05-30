@@ -17,10 +17,9 @@
 #include <assert.h>
 #include <stdlib.h>
 #include<string>
-namespace engine
+namespace Engine
 {
-	namespace core
-	{
+ 
 		const float k_pi = 3.14159265358979323846264f;
 
 		struct Vec2
@@ -212,7 +211,7 @@ namespace engine
 			return r;
 		}
 
-	}
+ 
 }
 
 #endif
