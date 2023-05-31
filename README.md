@@ -73,6 +73,8 @@ O proximo gif, já demonstra os conceitos aplicados na box2d lite, uma versão s
   - ``Render (Glew,Glad,ImgGui)``
   - ``Html5 com javascript Vanilla(mesmo código de C++ porém aplicado em um canvas)``
 
+  [![My Skills](https://skillicons.dev/icons?i=cpp,cmake,js,html,css,vscode)](https://skillicons.dev)
+
 ### Estrutura do projeto template
 
 ```
