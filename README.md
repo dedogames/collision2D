@@ -7,6 +7,8 @@
 
 >"A Ontogenia recapitula a filogenia." [Ernst Haeckel]
 
+#
+
 ### Table of Contents
 
 > :warning:
@@ -24,11 +26,13 @@ Por se tratar de alguns código extensos, irei focar na compreensão do mesmo, e
 * [Compreensão básica do algoritimo de colisão Sat]
 * [Implementando os exemplos <b>N Tutorial</b> ]
 
+#
 
 ### Um pouco Sobre Mim
  Me chamos Gelson Gomes Rodrigues, e sou desenvolvedor C/C++ a mais de 15 anos, e apaixonado por engines de jogos e criação de bibliotecas, buscando sempre aprender nas novas ferramentas, mas sem deixar o parte de programação raiz que o C/C++ sempre exigiu.
  Atualmente trabalhando com sistemas distribuidos e desenvolvendo arquitetura de novos produtos.
- 
+
+#
 
 ### Objetivo do Curso
 
@@ -62,6 +66,8 @@ O proximo gif, já demonstra os conceitos aplicados na box2d lite, uma versão s
   <img src="assets/box2lite.gif" /> 
 </p>
 
+#
+
 ### Tecnologias utilizadas:
 
 
@@ -74,6 +80,8 @@ O proximo gif, já demonstra os conceitos aplicados na box2d lite, uma versão s
   - ``Html5 com javascript Vanilla(mesmo código de C++ porém aplicado em um canvas)``
 
   [![My Skills](https://skillicons.dev/icons?i=cpp,cmake,js,html,css,vscode)](https://skillicons.dev)
+
+#
 
 ### Estrutura do projeto template
 
@@ -98,6 +106,8 @@ O proximo gif, já demonstra os conceitos aplicados na box2d lite, uma versão s
     ├──index.html
 ```
 
+#
+
 ### Padroes do código ultilizado
 
   - <b>enum</b> - Initialize com <b>E</b>Nome
@@ -113,8 +123,7 @@ O proximo gif, já demonstra os conceitos aplicados na box2d lite, uma versão s
     . object - <b>obj</b>Name
    
     
-
-  
+#
 
 ### Refencias(livros, sites e videos):
 
