@@ -112,10 +112,18 @@ O proximo gif, já demonstra os conceitos aplicados na box2d lite, uma versão s
    
     
 
+  
+
 ### Refencias(livros, sites e videos):
-https://gamesfromwithin.com/when-is-it-ok-not-to-tdd
-https://www.metanetsoftware.com/technique/tutorialA.html
-https://github.com/erincatto/box2d-lite
+
+Link  | Descrição
+------------- | -------------
+<a href="https://gamesfromwithin.com/when-is-it-ok-not-to-tdd">TDD</a>  | Usabilidade de testes em C++
+<a href="https://www.metanetsoftware.com/technique/tutorialA.html">Tutorial antigo de Sat</a>  | Excelente fonte sobre colisão 2D
+<a href="https://github.com/erincatto/box2d-lite">Box2dLite</a>  | Versão incial da Bax2D
+
+
+
 
  
 
