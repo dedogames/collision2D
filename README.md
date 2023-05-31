@@ -2,19 +2,57 @@
 
 <p align="center">
   <img src="assets/me.png" />
+  <br> <a href="https://ggrcursos.com/">ggrcursos.com</a>
 </p>
 
+>"A Ontogenia recapitula a filogenia." [Ernst Haeckel]
+
+### Table of Contents
+
+> **Observação**
+Por se tratar de alguns código extensos, irei focar na compreensão do mesmo, evitando de digitar linha por linha, ao invés disso, irei montando o projeto por partes, mas explicando as partes essenciais. 
+
+* [Um pouco sobre mim](#)
+* [Objetivo do curso](#)
+* [Tecnologias utilizadas](#)
+* [Estrutura do projeto template](#)
+* [Padroes do código ultilizado](#)
+* [Explicando o código do template](#)
+* [Abstraindo a camada e render(grafico) e I/0]
+* [Adicionando formas geometricas(ponto,circulo,linha,linha,vetor,retangulo)]
+* [Criando a classe responsavel por gui]
+* [Compreensão básica do algoritimo de colisão Sat]
+* [Implementando os exemplos <b>N Tutorial</b> ]
+
+
 ### Um pouco Sobre Mim
- Me chamos Gelson Gomes Rodrigues, e sou desenvolvedor C/C++ a mais de 15 anos, e apaixonado por engines de jogos, buscando sempre aprender nas novas ferramentas, mas sem deixar o parte de programação raiz que o C/C++ sempre exigiu.
- Atualmente trabalhando com sistemas distribuidos e desenvendo arquitetura de novos produtos.
+ Me chamos Gelson Gomes Rodrigues, e sou desenvolvedor C/C++ a mais de 15 anos, e apaixonado por engines de jogos e criação de bibliotecas, buscando sempre aprender nas novas ferramentas, mas sem deixar o parte de programação raiz que o C/C++ sempre exigiu.
+ Atualmente trabalhando com sistemas distribuidos e desenvolvendo arquitetura de novos produtos.
+ 
 
 ### Objetivo do Curso
 
 Aprender a modelar os exemplos que sempre permeiaram nossos livros de fisica e matematica, dando uma abordagem mais prática em como construir os exemplos, e não apenas em usar o conceito em um jogo/simulação final.
+A formula abaixo por exemplo, é facil de facil compreensão, mas como ela realmente é expressada de forma geometrica, e melhor ainda, como podemos a partir dela resolver problemas relacionados a rotacionar um frame(plano cartesiano(corrdenadas x, y  )) em relação ao outro frame?
+
+<center>
+
+$\begin{Bmatrix}
+cosθ &-sinθ\\
+sin θ & cos θ
+\end{Bmatrix} \times \begin{Bmatrix}
+x \\ y
+\end{Bmatrix}$
+
+</center>
+
+
+ 
+
 O gif abaixo demonstra o que iremos encontrar no decorrer desse curso que será fragmentado em várias partes, mas sempre com progressão.
-Nesse gif, ao invés de apensar visualizarmos os exemplos, iremos construi-los, ou seja, vamos modelar e implementar uma seta com com direção, criar um botão usando um retangulo, etc....
+Nesse gif, ao invés de apensar visualizarmos e interagir com os exemplos, iremos construi-los, ou seja, vamos modelar e implementar um vetor de forma visual, criar um botão da forma mais manual, etc....
 <p align="center">
-  <img src="assets/sat_examples.gif" /> 
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/FmgJl9pIuiM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </p>
 
 
@@ -35,7 +73,7 @@ O proximo gif, já demonstra os conceitos aplicados na box2d lite, uma versão s
   - ``Render (Glew,Glad,ImgGui)``
   - ``Html5 com javascript Vanilla(mesmo código de C++ porém aplicado em um canvas)``
 
-### Estrutura do projeto
+### Estrutura do projeto template
 
 ```
 ├── cpp_project
