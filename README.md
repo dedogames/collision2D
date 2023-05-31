@@ -9,7 +9,7 @@
 
 ### Table of Contents
 
-> **Observação**
+> :warning:
 Por se tratar de alguns código extensos, irei focar na compreensão do mesmo, evitando de digitar linha por linha, ao invés disso, irei montando o projeto por partes, mas explicando as partes essenciais. 
 
 * [Um pouco sobre mim](#)
