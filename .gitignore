@@ -250,6 +250,8 @@ orleans.codegen.cs
 
 # RIA/Silverlight projects
 Generated_Code/
+.DS_Store
+**/.DS_Store
 
 # Backup & report files from converting an old project file
 # to a newer Visual Studio version. Backup files are not needed,
@@ -381,6 +383,7 @@ FodyWeavers.xsd
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
+.vscode/setttings.json
 !.vscode/extensions.json
 *.code-workspace
 
@@ -393,6 +396,24 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
-
+*.a
 # JetBrains Rider
 *.sln.iml
+
+
+cpp_project/libGelRenderIO/extern
+
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+build/
+
