@@ -5,11 +5,9 @@
   <br> <a href="https://ggrcursos.com/">ggrcursos.com</a>
 </p>
 
->"A Ontogenia recapitula a filogenia." [Ernst Haeckel]
+ 
 
-#
-
-### Table of Contents
+### Conteudo
 
 > :warning:
 Por se tratar de alguns código extensos, irei focar na compreensão do mesmo, evitando de digitar linha por linha, ao invés disso, irei montando o projeto por partes, mas explicando as partes essenciais. 
@@ -31,9 +29,7 @@ Por se tratar de alguns código extensos, irei focar na compreensão do mesmo, e
 ### Um pouco Sobre Mim
  Me chamos Gelson Gomes Rodrigues, e sou desenvolvedor C/C++ a mais de 15 anos, e apaixonado por engines de jogos e criação de bibliotecas, buscando sempre aprender nas novas ferramentas, mas sem deixar o parte de programação raiz que o C/C++ sempre exigiu.
  Atualmente trabalhando com sistemas distribuidos e desenvolvendo arquitetura de novos produtos.
-
 #
-
 ### Objetivo do Curso
 
 Aprender a modelar os exemplos que sempre permeiaram nossos livros de fisica e matematica, dando uma abordagem mais prática em como construir os exemplos, e não apenas em usar o conceito em um jogo/simulação final.
