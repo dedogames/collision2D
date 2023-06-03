@@ -1,4 +1,4 @@
-## Aprendendo sobre colisão 2D na prática
+## Pate 1 - Aprendendo sobre colisão 2D na prática
 
 <p align="center">
   <img src="assets/me.png" />
@@ -8,23 +8,39 @@
  
 
 ### Conteudo
-
+ 
 > :warning:
 Por se tratar de alguns código extensos, irei focar na compreensão do mesmo, evitando de digitar linha por linha, ao invés disso, irei montando o projeto por partes, mas explicando as partes essenciais. 
 
-* [Um pouco sobre mim](#)
-* [Objetivo do curso](#)
-* [link youtube](#)
-* [Tecnologias utilizadas](#)
-* [Estrutura do projeto template](#)
-* [Padroes do código ultilizado](#)
-* [Explicando o código do template](#)
-* [Abstraindo a camada e render(grafico) e I/0]
-* [Adicionando formas geometricas(ponto,circulo,linha,linha,vetor,retangulo)]
-* [Criando a classe responsavel por gui]
-* [Compreensão básica do algoritimo de colisão Sat]
-* [Implementando os exemplos <b>N Tutorial</b> ]
+* **Part 1** 
+  * [Um pouco sobre mim 1](#)
+  * [Objetivo do curso](#)
+  * [link youtube](#)
+  * [Tecnologias utilizadas](#)
+  * [Estrutura do projeto template](#)
+  * [Padroes do código ultilizado](#)
+  * [Explicando o código do template](#)
 
+* **Part 2**
+  * <span style="opacity: 0.3; ">Abstraindo a camada e render(grafico) e I/0</span>
+  * <span style="opacity: 0.3; ">Adicionando formas geometricas(ponto,circulo,linha,linha,vetor,retangulo)</span>
+  * <span style="opacity: 0.3; ">Criando a classe responsavel por gui</span>
+  * <span style="opacity: 0.3; ">Compreensão básica do algoritimo de colisão Sat</span>
+  * <span style="opacity: 0.3; ">Implementando os exemplos <b>N Tutorial</b> </span>
+* **Part 3**
+  * <span style="opacity: 0.3; ">Compreensão básica de fisica e Cálculo aplicada</span>
+  * <span style="opacity: 0.3; ">Analisando o core da Box2d Lite</span>
+  * <span style="opacity: 0.3; ">Adicionando novas formas geometricas na nossa engine</span>
+  * <span style="opacity: 0.3; ">Criando mais testes com as novas formulas</span>
+  * <span style="opacity: 0.3; ">Implementando os exemplos <b>N Tutorial</b> </span>
+* **Part 4**
+  * <span style="opacity: 0.3; ">Atualizar cmke com nova versão, e atualizar do C++17 para o C++20</span>
+  * <span style="opacity: 0.3; ">Refatorar a lib de RenderIO para adicionar textures(.png, e se possivel mapeamento de texture .spine)</span>
+  * <span style="opacity: 0.3; ">Implementar a estrutura de um jogo com uma maquina de estados</span>
+  * <span style="opacity: 0.3; ">Refatora o IO para controlar joystic , mouse e teclado de forma mais simples</span>
+  * <span style="opacity: 0.3; ">Modelar um jogo simples de sinuca com apenas um jogador usando nossa engine e com textura(imagens)</span>
+  * <span style="opacity: 0.3; ">Criar uma lib básica com Boost::Asio com o modelo client/servidor</span>
+  * <span style="opacity: 0.3; ">Criar um server básico e permitir a conexão de 2 usuários simultaneos no jogo de sinuca</span>
 #
 
 ### Um pouco Sobre Mim
@@ -33,13 +49,7 @@ Por se tratar de alguns código extensos, irei focar na compreensão do mesmo, e
 #
 
 ### Link do curso no youtube
-<center>
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/FmgJl9pIuiM" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-</center>
+
 
 ### Objetivo do Curso
 
@@ -71,6 +81,12 @@ O proximo gif, já demonstra os conceitos aplicados na box2d lite, uma versão s
 
 <p align="center">
   <img src="assets/box2lite.gif" /> 
+</p>
+
+Será implementado um jogo muito básico de sinunca para demontrar os conceitos apreendidos com a engine e também será adicionado uma cadama importante, a de redes, usando o modelo client/server.
+
+<p align="center">
+  <img src="assets/pool.png" /> 
 </p>
 
 #
@@ -116,18 +132,18 @@ O proximo gif, já demonstra os conceitos aplicados na box2d lite, uma versão s
 #
 
 ### Padroes do código ultilizado
+ 
+ O padrão não precisa ser rígido, mas em códigos extensos, é importante defini-los.
 
-  - <b>enum</b> - Initialize com <b>E</b>Nome
-  - <b>strucut, class,namespace</b> - Segue o padrão <b>P</b>ascal<b>C</b>ase, primeira letra maiuscula.
-  - <b>variavel, função, metodo</b> - padrão <b>c</b>amel<b>C</b>ase
-  - <b>interface</b> - Initialize com <b>I</b>Nome
-  - <b>variavel em javascript</b> - padrão <b>c</b>amel<b>C</b>ase porém adicionar os tipos antes da variavel:
-    . string - <b>str</b>Name
-    . integer - <b>int</b>Name
-    . floag, double - <b>nb</b>Name
-    . boolean -  <b>bl</b>Name
-    . class - <b>cls</b>Name
-    . object - <b>obj</b>Name
+   | Commando | Descricao |  
+   | --- | --- |
+   | <b>enum</b> | Initializa com <b>E</b>Nome |
+   | <b>strucut, class,namespace</b> | Segue o padrão <b>P</b>ascal<b>C</b>ase |
+   | <b>strucut*, class*</b> | Segue o padrão <b>P</b>ascal<b>C</b>ase com **Ptr** no final |
+   | <b>variavel, função, metodo</b> | padrão <b>c</b>amel<b>C</b>ase|
+   | <b>interface</b> | Initializa com <b>I</b>Nome|
+   | <b>variaveis</b> | Tipos antes da variavel:</p><p>string - <b>str</b>Name</p><p> integer - <b>int</b>Name</p><p>float, double - <b>nb</b>Name</p><p>boolean -  <b>bl</b>Name</p><p>pointer- <b>ptr</b>Name</p><p>object - <b>obj</b>Name</p> |
+   | <b>constantes</b> | **UPPER_CASE_COM_UNDESCORE**
    
     
 #
@@ -136,19 +152,18 @@ O proximo gif, já demonstra os conceitos aplicados na box2d lite, uma versão s
 
 Link  | Descrição
 ------------- | -------------
-<a href="https://gamesfromwithin.com/when-is-it-ok-not-to-tdd">TDD</a>  | Usabilidade de testes em C++
-<a href="https://www.metanetsoftware.com/technique/tutorialA.html">Tutorial antigo de Sat</a>  | Excelente fonte sobre colisão 2D
-<a href="https://github.com/erincatto/box2d-lite">Box2dLite</a>  | Versão incial da Bax2D
+|<a href="https://gamesfromwithin.com/when-is-it-ok-not-to-tdd">TDD</a>  | Usabilidade de testes em C++
+|<a href="https://www.metanetsoftware.com/technique/tutorialA.html">Tutorial antigo de Sat</a>  | Excelente fonte sobre colisão 2D que irei replicar os exemplos
+|<a href="https://github.com/erincatto/box2d-lite">Box2dLite</a>  | Versão incial da Box2D
+|<a href="https://www.youtube.com/@codingmath">Javascript com matematica</a> | Video aulas em javascript mas com conceitos bem interessantes 
+|<a href="https://www.amazon.com.br/Design-Patterns-Modern-Approaches-Object-Oriented/dp/1484236025">Livro design patterns</a> | O tema dispensa comentários
+|<a href="https://www.google.com/imgres?imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F51WfngocjgL._AC_UF1000%2C1000_QL80_.jpg&tbnid=KKPTPgCjoxJZLM&vet=12ahUKEwjiv_Kz9ab_AhVON7kGHdQdAB4QMygAegUIARC9AQ..i&imgrefurl=https%3A%2F%2Fwww.amazon.com%2FMathematics-Physics-Programmers-Programming-Kodicek%2Fdp%2F1584503300&docid=pP4aYpewosyK4M&w=804&h=1000&q=physics%20and%20math%20for%20programmers&ved=2ahUKEwjiv_Kz9ab_AhVON7kGHdQdAB4QMygAegUIARC9AQ">Livro de fisica e matemacia para programadores</a> | Exelente material para quem procura algo mais palatavel e compreensivel |
+| <a href="https://www.amazon.com.br/C-Programming-Language-Bjarne-Stroustrup/dp/0321563840">Livro de C++11</a>| Livro de mestre, a no leva aos conceitos internos da linaguem
+| <a href="http://www.songho.ca/opengl/gl_projectionmatrix_mathml.html">Projeço em OpenGl</a> | Excelente material técnico sobre como funciona uma projecão em OpenGl
+
+
 
 
 
 
  
-
-
-        
-
-
-
-    
-     
