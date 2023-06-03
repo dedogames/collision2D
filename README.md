@@ -14,6 +14,7 @@ Por se tratar de alguns código extensos, irei focar na compreensão do mesmo, e
 
 * [Um pouco sobre mim](#)
 * [Objetivo do curso](#)
+* [link youtube](#)
 * [Tecnologias utilizadas](#)
 * [Estrutura do projeto template](#)
 * [Padroes do código ultilizado](#)
@@ -30,6 +31,16 @@ Por se tratar de alguns código extensos, irei focar na compreensão do mesmo, e
  Me chamos Gelson Gomes Rodrigues, e sou desenvolvedor C/C++ a mais de 15 anos, e apaixonado por engines de jogos e criação de bibliotecas, buscando sempre aprender nas novas ferramentas, mas sem deixar o parte de programação raiz que o C/C++ sempre exigiu.
  Atualmente trabalhando com sistemas distribuidos e desenvolvendo arquitetura de novos produtos.
 #
+
+### Link do curso no youtube
+<center>
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/FmgJl9pIuiM" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
+</center>
+
 ### Objetivo do Curso
 
 Aprender a modelar os exemplos que sempre permeiaram nossos livros de fisica e matematica, dando uma abordagem mais prática em como construir os exemplos, e não apenas em usar o conceito em um jogo/simulação final.
