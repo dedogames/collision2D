@@ -48,8 +48,10 @@ Por se tratar de alguns código extensos, irei focar na compreensão do mesmo, e
  Atualmente trabalhando com sistemas distribuidos e desenvolvendo arquitetura de novos produtos.
 #
 
-### Link do curso no youtube
-
+### Link do curso no youtube 
+<center>
+[![Video com o conteûdo do curso](https://img.youtube.com/vi/FmgJl9pIuiM/0.jpg)](https://www.youtube.com/watch?v=FmgJl9pIuiM)
+  </center>
 
 ### Objetivo do Curso
 
