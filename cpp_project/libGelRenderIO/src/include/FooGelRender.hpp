@@ -1,21 +1,16 @@
 #ifndef FOO_GEL_RENDER_HPP
 #define FOO_GEL_RENDER_HPP
 
-#include<iostream>
+#include <iostream>
 #include "Math.hpp"
 
-
-namespace Render{
-    
+namespace Render
+{
     class FooGelRender
     {
-        public:
+    public:
         FooGelRender();
         Engine::Mat22 rotate(float angle);
-        private:
-       
-
-
     };
 }
 #endif

@@ -38,6 +38,7 @@ include_directories(src/include)
 include_directories(/usr/local/include)
 
 add_subdirectory(src)
+
 if(${GIL_LIB_TEST})
     add_subdirectory(test)
 endif()

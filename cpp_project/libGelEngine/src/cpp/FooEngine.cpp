@@ -4,10 +4,9 @@ namespace Engine
 {
     FooEngine::FooEngine(const  Vec2 &size) : m_size(size)
     {
-        std::cout << "  - Constructor call from libGelEngine project" << std::endl;
     }
 
-    Vec2 FooEngine::halfSize()
+    Vec2 FooEngine::getHalfSize()
     {
         return  0.5f * m_size;
     }
