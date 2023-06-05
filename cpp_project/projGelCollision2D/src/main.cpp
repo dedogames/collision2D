@@ -1,7 +1,7 @@
  
 #include "FooEngine.hpp"
 #include "FooGelRender.hpp"
-#include "utils/log.hpp"
+#include "utils/Log.hpp"
 
 using namespace Render::Utils;
 int main()
@@ -10,7 +10,7 @@ int main()
 
     Log() << "Base Project cmake using C++17 and multiple projects."<<Log::endl()<<Log::endl();
     Log() << "1 - libGelEngine - Implementation of or Engine"<<Log::endl();
-    Engine::FooEngine eng = Engine::FooEngine{}; Log()<<Log::endl();
+    Engine::FooEngine l_eng = Engine::FooEngine{}; Log()<<Log::endl();
     Log() << "2 - libGelRenderIO - Build a graph and IO library"<<Log::endl();
     Render::FooGelRender l_render =  Render::FooGelRender{}; Log() <<Log::endl();
     Log() << "3 - projGelCollision2D - Join everthing with pratical exemples"<<Log::endl();

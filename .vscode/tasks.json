@@ -3,22 +3,11 @@
 	"tasks": [
 		{
 			"type": "shell",
-			"label": "build",
-			"command": "cd cpp_project; mkdir build; cd build; cmake ../ && make -j10;",
-			"group": "build",
-			"problemMatcher": [],
-			"detail": "CMake template build task"
-		},
-
-		{
-			"type": "shell",
 			"label": "testGelEngine",
 			"command": "cd cpp_project; mkdir build; cd build; cmake -DCMAKE_VERBOSE_MAKEFILE=OFF  -DGIL_LIB_TEST=ON ../ && make  -j10 ;",
 			"group": "build",
-			"problemMatcher": [],
-			"detail": "CMake template build task"
+			"problemMatcher": []
 		},
-
 		{
 			"type": "shell",
 			"label": "testRenderIO",
@@ -27,16 +16,14 @@
 			"problemMatcher": [],
 			"detail": "CMake template build task"
 		},
-
 		{
 			"type": "shell",
-			"label": "testCollision",
-			"command": "cd cpp_project; mkdir build; cd build; cmake -DCOLLISION2D_LIB_TEST=ON ../ && make -j10;",
+			"label": "build",
+			"command": "cd cpp_project; mkdir build; cd build; cmake ../ && make -j10;",
 			"group": "build",
 			"problemMatcher": [],
 			"detail": "CMake template build task"
 		},
-
 		{
 			"type": "shell",
 			"label": "buildAllTests",
@@ -45,11 +32,5 @@
 			"problemMatcher": [],
 			"detail": "CMake template build task"
 		},
-	
-		
 	]
 }
-
-
-
- 

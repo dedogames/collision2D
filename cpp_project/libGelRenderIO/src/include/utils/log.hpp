@@ -4,44 +4,41 @@
 #include <iostream>
 #include <string>
 #include <chrono>
-
+#include <iomanip>
 #include <sstream>
 
-using namespace std;
 namespace Render
 {
     namespace Utils
     {
+      
 
-        using namespace std;
-
-        enum typelog
+        enum ETypeLog
         {
             DEBUG,
             INFO,
             WARN,
             ERROR,
-            CONSOLE
+            UNKOWN
         };
 
         class Log
         {
         public:
             std::string getTimeStr()
-            {
-                std::time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-
-                std::string s(30, '\0');
-                std::strftime(&s[0], s.size(), "%Y-%m-%d %H:%M:%S", std::localtime(&now));
-                return s;
+            { 
+                auto l_now = std::chrono::system_clock::now();
+                auto l_localTime = std::chrono::system_clock::to_time_t(l_now);
+                std::stringstream l_ss;
+                l_ssss << std::put_time(std::localtime(&l_localTime), "%F %H-%M-%S");
+                return l_ss.str();
             }
-            Log(typelog type = CONSOLE)
+            Log(ETypeLog type = ETypeLog::UNKOWN)
             {
-                msglevel = type;
+                m_msglevel = type;
 
-                if (type != CONSOLE)
+                if (type != ETypeLog::UNKOWN)
                 {
-                    auto now = std::chrono::system_clock::now();
                     operator<<(getTimeStr()) << (" [" + getLabel(type) + "] ");
                 }
             }
@@ -51,7 +48,6 @@ namespace Render
 
             static std::string endl()
             {
-
                 return "\n";
             }
 
@@ -59,34 +55,34 @@ namespace Render
             Log &operator<<(const T &msg)
             {
 
-                cout << msg;
+                std::cout << msg;
                 return *this;
             }
 
         private:
-            typelog msglevel = DEBUG;
-            inline string getLabel(typelog type)
+            ETypeLog m_msglevel;
+            inline string getLabel(ETypeLog e_type)
             {
-                string label;
-                switch (type)
+                string l_label;
+                switch (e_type)
                 {
                 case DEBUG:
-                    label = "DEBUG";
+                    l_label = "DEBUG";
                     break;
                 case INFO:
-                    label = "INFO";
+                    l_label = "INFO";
                     break;
                 case WARN:
-                    label = "WARN";
+                    l_label = "WARN";
                     break;
                 case ERROR:
-                    label = "ERROR";
+                    l_label = "ERROR";
                     break;
                 default:
-                    label = "";
+                    l_label = "";
                     break;
                 }
-                return label;
+                return l_label;
             }
         };
     }

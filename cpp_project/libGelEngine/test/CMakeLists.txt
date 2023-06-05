@@ -1,6 +1,5 @@
  
 
-
 file(GLOB_RECURSE CPPS *.cpp) 
 file(GLOB_RECURSE HPPS "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp") 
 
@@ -15,11 +14,13 @@ endforeach()
 list(REMOVE_DUPLICATES INCLUDE_DIRS)
 
 
-add_executable(testGelEngine ${SRC_FILES} ${INCLUDE_DIRS})
+add_executable( testGelRender ${SRC_FILES} ${INCLUDE_DIRS}) 
 
-target_link_libraries(testGelEngine
+target_link_libraries(testGelRender
  PRIVATE
   GTest::gtest_main
   GelEngine
+  GelRenderIO
   )
+
  
