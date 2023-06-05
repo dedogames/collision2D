@@ -21,8 +21,7 @@ Por se tratar de alguns código extensos, irei focar na compreensão do mesmo, e
   * [CMake na raiz do projeto](#cmake-na-raiz-do-projeto)
   * [Criando um lib ou um executavel com CMake](#criando-um-lib-ou-um-executavel-com-cmake)
   * [Projeto no Visual Studio Code](#projeto-no-visual-studio-code)
-  * [Padroes do código ultilizado](#padroes-do-código-ultilizado)
-  * [Explicando o código do template](#explicando-o-código-do-template)
+  * [Padroes do código ultilizado](#padroes-do-código-ultilizado) 
 
 * **Part 2**
   * <span style="opacity: 0.3; ">Abstraindo a camada e render(grafico) e I/0(teclado, mouse e joystick)</span>
@@ -220,7 +219,7 @@ set(projectName_TARGET_LIBRARIES
 target_link_libraries(Nome ${libGelEngine_TARGET_LIBRARIES} ${OPENGL_LIBRARIES})
  ```
 
- ### asdfasdf asdfdasf
+ ### Projeto no Visual Studio Code
 
  ***Obs: Tanto o tasks.json quanto o launch.json , devem ficar dentro da vasta .vscode***
 
